@@ -5,14 +5,18 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
   <persistence-unit name="oracle-hr-jpa-pu" transaction-type="JTA">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
     <jta-data-source>java:app/datasources/oracleHrDS</jta-data-source>
-    <class>dmit2015.hr.entity.CountriesEntity</class>
-    <class>dmit2015.hr.entity.DepartmentsEntity</class>
-    <class>dmit2015.hr.entity.EmployeesEntity</class>
-    <class>dmit2015.hr.entity.JobsEntity</class>
-    <class>dmit2015.hr.entity.JobHistoryEntity</class>
-    <class>dmit2015.hr.entity.LocationsEntity</class>
-    <class>dmit2015.hr.entity.RegionsEntity</class>
+    <class>dmit2015.hr.entity.Country</class>
+    <class>dmit2015.hr.entity.Department</class>
+    <class>dmit2015.hr.entity.Employee</class>
+    <class>dmit2015.hr.entity.Job</class>
+    <class>dmit2015.hr.entity.JobHistory</class>
+    <class>dmit2015.hr.entity.JobHistoryPK</class>
+    <class>dmit2015.hr.entity.Location</class>
+    <class>dmit2015.hr.entity.Region</class>
+
     <properties>
       <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//localhost:11521/XEPDB1"/>
       <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
