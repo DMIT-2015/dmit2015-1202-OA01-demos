@@ -1,0 +1,259 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dmit2015</groupId>
+  <artifactId>dmit2015-instructor-jaxrs-demo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+
+    <!-- Jakarta EE and Eclipse MicroProfile -->
+    <version.jakarta.jakartaee-api>8.0.0</version.jakarta.jakartaee-api>
+    <version.microprofile>3.3</version.microprofile>
+
+    <!-- Security libraries -->
+    <version.jasypt>1.9.3</version.jasypt>
+    <version.jakarta.security.enterprise>1.0.1</version.jakarta.security.enterprise>
+    <version.ldap-api>2.0.1</version.ldap-api>
+
+    <!-- Language libraries -->
+    <version.lombok>1.18.16</version.lombok>
+    <version.commons-math3>3.6.1</version.commons-math3>
+    <version.commons-lang3>3.8.1</version.commons-lang3>
+
+    <!-- File and Graphics libraries -->
+    <version.commons-io>2.6</version.commons-io>
+    <version.commons-fileupload>1.4</version.commons-fileupload>
+    <version.jackson-datatype>2.10.3</version.jackson-datatype>
+
+    <!-- JavaServer Faces (JSF) and Web -->
+    <version.omnifaces>3.8</version.omnifaces>
+    <version.primefaces>8.0</version.primefaces>
+    <version.bootsfaces>1.5.0</version.bootsfaces>
+    <version.thymeleaf>3.0.11.RELEASE</version.thymeleaf>
+
+    <!-- JDBC drivers -->
+    <version.h2database>1.4.200</version.h2database>
+    <version.mssql-jdbc>8.4.1.jre11</version.mssql-jdbc>
+    <version.ojdbc10>19.8.0.0</version.ojdbc10>
+    <version.postgresql>42.2.18</version.postgresql>
+    <version.mysql-connector-java>8.0.22</version.mysql-connector-java>
+    <version.mariadb-java-client>2.7.0</version.mariadb-java-client>
+
+    <!-- Unit and Functional Testing Libraries -->
+    <version.junit.jupiter>5.7.1</version.junit.jupiter>
+    <version.junit-platform-runner>1.7.1</version.junit-platform-runner>
+    <version.mockito-core>3.5.13</version.mockito-core>
+    <version.selenium-java>3.141.59</version.selenium-java>
+    <version.selenium-jupiter>3.3.5</version.selenium-jupiter>
+    <version.webdrivermanager>4.2.2</version.webdrivermanager>
+
+    <!-- Integration Testing libraries -->
+    <version.microshed>0.9.1</version.microshed>
+    <version.hibernate-validator>6.1.5.Final</version.hibernate-validator>
+    <version.jakarta.el>3.0.3</version.jakarta.el>
+    <version.jakarta.json>1.1.6</version.jakarta.json>
+    <version.jaxb-api>2.3.1</version.jaxb-api>
+    <version.yasson>1.0.8</version.yasson>
+
+    <!-- Plugin versions -->
+    <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
+    <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
+    <version.maven-surefire-plugin>2.22.2</version.maven-surefire-plugin>
+    <version.maven-failsafe-plugin>2.22.2</version.maven-failsafe-plugin>
+    <version.liberty-maven-plugin>3.2.4</version.liberty-maven-plugin>
+    <version.wildfly-maven-plugin>2.0.2.Final</version.wildfly-maven-plugin>
+
+  </properties>
+
+  <dependencies>
+
+    <!-- Jakarta EE and Eclipse MicroProfile -->
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <version>${version.jakarta.jakartaee-api}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.microprofile</groupId>
+      <artifactId>microprofile</artifactId>
+      <version>${version.microprofile}</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Security libraries -->
+    <dependency>
+      <groupId>org.jasypt</groupId>
+      <artifactId>jasypt</artifactId>
+      <version>${version.jasypt}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.soteria</groupId>
+      <artifactId>jakarta.security.enterprise</artifactId>
+      <version>${version.jakarta.security.enterprise}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.directory.api</groupId>
+      <artifactId>api-all</artifactId>
+      <version>${version.ldap-api}</version>
+    </dependency>
+
+    <!-- Language libraries -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.lombok}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-math3</artifactId>
+      <version>${version.commons-math3}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${version.commons-lang3}</version>
+    </dependency>
+
+    <!-- File and Graphics libraries -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-csv</artifactId>
+      <version>${version.jackson-datatype}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${version.jackson-datatype}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${version.commons-io}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>${version.commons-fileupload}</version>
+    </dependency>
+
+    <!-- JavaServer Faces (JSF) and Web -->
+    <dependency>
+      <groupId>org.omnifaces</groupId>
+      <artifactId>omnifaces</artifactId>
+      <version>${version.omnifaces}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>${version.primefaces}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.bootsfaces</groupId>
+      <artifactId>bootsfaces</artifactId>
+      <version>${version.bootsfaces}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf</artifactId>
+      <version>${version.thymeleaf}</version>
+    </dependency>
+
+    <!-- JDBC drivers -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${version.h2database}</version>
+    </dependency>
+
+    <!-- Unit and Functional Testing Libraries -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${version.junit.jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-runner</artifactId>
+      <version>${version.junit-platform-runner}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${version.mockito-core}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${version.selenium-java}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${version.webdrivermanager}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>selenium-jupiter</artifactId>
+      <version>${version.selenium-jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Integration Testing libraries -->
+    <dependency>
+      <groupId>org.microshed</groupId>
+      <artifactId>microshed-testing-testcontainers</artifactId>
+      <version>${version.microshed}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.microshed</groupId>
+      <artifactId>microshed-testing-wildfly</artifactId>
+      <version>${version.microshed}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${version.hibernate-validator}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>jakarta.el</artifactId>
+      <version>${version.jakarta.el}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>dmit2015-instructor-jaxrs-demo</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
