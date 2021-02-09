@@ -5,6 +5,7 @@ import dmit2015.repository.TodoItemRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -39,21 +40,20 @@ import java.util.Optional;
  -d '{"name":"Submit DMIT2015 Assignment 1","complete":false}' \
  -H 'Content-Type:application/json'
 
- curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/5
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
- curl -i -X PUT http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/5 \
- -d '{"id":5,"name":"Submitted DMIT2015 assignment 5","complete":true}' \
+ curl -i -X PUT http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4 \
+ -d '{"id":4,"name":"Submitted DMIT2015 assignment 5","complete":true}' \
  -H 'Content-Type:application/json'
 
- curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/5
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
- curl -i -X DELETE http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/5
+ curl -i -X DELETE http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
- curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/5
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
  *
  */
-
 @ApplicationScoped
 // This is a CDI-managed bean that is created only once during the life cycle of the application
 @Path("TodoItems")	        // All methods of this class are associated this URL path
