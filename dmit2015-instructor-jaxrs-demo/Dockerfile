@@ -1,6 +1,7 @@
-FROM openliberty/open-liberty:kernel-java11-openj9-ubi
+# Wildfly settings
+FROM jboss/wildfly:latest
+ADD target/dmit2015-instructor-jaxrs-demo.war /opt/jboss/wildfly/standalone/deployments/
 
-COPY --chown=1001:0  target/dmit2015-instructor-jaxrs-demo.war /config/dropins/
-COPY --chown=1001:0  server.xml /config
+USER root
+RUN ln -s -f /usr/share/zoneinfo/MST /etc/localtime
 
-RUN configure.sh
