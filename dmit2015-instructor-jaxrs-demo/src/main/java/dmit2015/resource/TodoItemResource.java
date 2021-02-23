@@ -36,9 +36,7 @@ import java.util.Optional;
 
  curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/1
 
- curl -i -X POST http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems \
- -d '{"name":"Submit DMIT2015 Assignment 1","complete":false}' \
- -H 'Content-Type:application/json'
+ curl -i -X POST http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems  -d '{"name":"Submit DMIT2015 Assignment 1","complete":false}' -H 'Content-Type:application/json'
 
  curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
