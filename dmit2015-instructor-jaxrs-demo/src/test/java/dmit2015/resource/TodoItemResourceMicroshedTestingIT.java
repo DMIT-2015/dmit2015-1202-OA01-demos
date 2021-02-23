@@ -6,10 +6,12 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import org.microshed.testing.jupiter.MicroShedTest;
 import org.microshed.testing.testcontainers.ApplicationContainer;
+import org.testcontainers.containers.startupcheck.MinimumDurationRunningStartupCheckStrategy;
 import org.testcontainers.junit.jupiter.Container;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * https://github.com/rest-assured/rest-assured/wiki/Usage
  * http://www.mastertheboss.com/jboss-frameworks/resteasy/restassured-tutorial
  * http://json-b.net/docs/user-guide.html
+ * https://www.testcontainers.org/features/startup_and_waits/
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -30,8 +33,10 @@ public class TodoItemResourceMicroshedTestingIT {
     @Container
     public static ApplicationContainer app = new ApplicationContainer()
             .withAppContextRoot("/dmit2015-instructor-jaxrs-demo")
-            .withReadinessPath("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems");
-
+            .withReadinessPath("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
+            .withStartupCheckStrategy(
+                new MinimumDurationRunningStartupCheckStrategy(Duration.ofSeconds(1))
+            );
 
     String testDataResourceLocation;
 
