@@ -6,7 +6,6 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import org.microshed.testing.jupiter.MicroShedTest;
 import org.microshed.testing.testcontainers.ApplicationContainer;
-import org.testcontainers.containers.startupcheck.MinimumDurationRunningStartupCheckStrategy;
 import org.testcontainers.junit.jupiter.Container;
 
 import javax.json.bind.Jsonb;
@@ -34,9 +33,7 @@ public class TodoItemResourceMicroshedTestingIT {
     public static ApplicationContainer app = new ApplicationContainer()
             .withAppContextRoot("/dmit2015-instructor-jaxrs-demo")
             .withReadinessPath("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
-            .withStartupCheckStrategy(
-                new MinimumDurationRunningStartupCheckStrategy(Duration.ofSeconds(1))
-            );
+            .withStartupTimeout(Duration.ofSeconds(120));
 
     String testDataResourceLocation;
 
