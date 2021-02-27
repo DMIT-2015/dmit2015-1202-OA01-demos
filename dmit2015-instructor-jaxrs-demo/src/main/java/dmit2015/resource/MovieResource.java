@@ -85,13 +85,7 @@ public class MovieResource {
         if (optionalMovie.isEmpty()) {
             throw new NotFoundException();
         }
-        Movie existingMovie = optionalMovie.get();
-        existingMovie.setGenre(updatedMovie.getGenre());
-        existingMovie.setPrice(updatedMovie.getPrice());
-        existingMovie.setRating(updatedMovie.getRating());
-        existingMovie.setTitle(updatedMovie.getTitle());
-        existingMovie.setReleaseDate(updatedMovie.getReleaseDate());
-        _movieRepository.update(existingMovie);
+        _movieRepository.update(updatedMovie);
 
         return Response.noContent().build();
     }
