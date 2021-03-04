@@ -1,0 +1,68 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/bootsfaces-template.xhtml">
+
+    <ui:param name="title" value="Edit Entity"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Edit Entity</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:panel title="Entity Details"
+                     collapsible="false"
+            >
+                <b:inputText id="replace-with-id-field"
+                             label="replace-with-id-field-name"
+                             value="replace-with-JSF-EL-value-expression"
+                             readonly="true">
+                </b:inputText>
+
+                <b:inputText
+                        id="replace-with-1st-editable-field"
+                        label="replace-with-1st-edit-field"
+                        value="replace-with-1st-editable-JSF-EL-value-expression">
+                    <b:focus/> <!-- set focus on the first editable field -->
+                </b:inputText>
+
+                <b:inputText
+                        id="replace-with-2nd-editable-field"
+                        label="replace-with-2nd-edit-field"
+                        value="replace-with-2nd-editable-JSF-EL-value-expression">
+                </b:inputText>
+
+                <!-- TODO: add input fiedls for the properties of the entity -->
+
+
+            </b:panel>
+            <b:commandButton value="Save"
+                             look="primary"
+                             iconAwesome="save"
+                             action="replace-this-with-JSF-EL-method-expression"
+                             update=":messages @form"/>
+            |
+            <b:link id="backToListLink" outcome="index">
+                Back to List
+            </b:link>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>
