@@ -42,8 +42,24 @@
                 <b:dataTableColumn label="Title" value="#{currentItem.title}">
                 </b:dataTableColumn>
 
-                <b:dataTableColumn label="Release Date" value="#{currentItem.releaseDate}">
+                <b:dataTableColumn label="Release Date" >
+                    <h:outputText value="#{currentItem.releaseDate}">
+                        <f:convertDateTime type="localDate" pattern="MMM dd, yyyy" />
+                    </h:outputText>
                 </b:dataTableColumn>
+
+                <b:dataTableColumn label="Rating" value="#{currentItem.rating}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Genre" value="#{currentItem.genre}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Price" >
+                    <h:outputText value="#{currentItem.price}">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </b:dataTableColumn>
+
 
                 <b:dataTableColumn label="Action">
                     <b:link id="editLink" outcome="edit" icon-awesome="edit">
