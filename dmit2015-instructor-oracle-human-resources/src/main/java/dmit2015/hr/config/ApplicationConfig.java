@@ -2,6 +2,7 @@ package dmit2015.hr.config;
 
 import javax.annotation.sql.DataSourceDefinition;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.annotation.FacesConfig;
 
 @DataSourceDefinition(
     name = "java:app/datasources/oracleHrDS",
@@ -11,6 +12,7 @@ import javax.enterprise.context.ApplicationScoped;
     password = "Password2015"
 )
 
+@FacesConfig
 @ApplicationScoped  // This is a CDI managed bean that once it is created
                     // it stays in memory until the application shutdown
 public class ApplicationConfig {

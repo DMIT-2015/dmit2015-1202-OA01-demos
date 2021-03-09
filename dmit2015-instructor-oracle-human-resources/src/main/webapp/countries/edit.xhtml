@@ -1,0 +1,70 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Edit Country"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Edit Country</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:panel title="Country Details"
+                     collapsible="false"
+            >
+                <b:inputText id="entityId"
+                             label="Country ID"
+                             value="#{currentCountryEditController.editId}"
+                             readonly="true">
+                </b:inputText>
+
+                <b:inputText
+                        id="countryName"
+                        label="Country Name"
+                        value="#{currentCountryEditController.existingCountry.countryName}">
+                </b:inputText>
+
+                <b:selectOneMenu
+                        id="selectedRegionId"
+                        label="Region"
+                        value="#{currentCountryEditController.selectedRegionId}">
+                    <f:selectItems
+                            value="#{currentRegionListController.regionList}"
+                            var="currentRegion"
+                            itemLabel="#{currentRegion.regionName}"
+                            itemValue="#{currentRegion.regionId}" />
+                </b:selectOneMenu>
+
+            </b:panel>
+
+            <b:commandButton value="Save"
+                             look="primary"
+                             iconAwesome="save"
+                             action="#{currentCountryEditController.onUpdate()}"
+                             update=":messages @form"/>
+            |
+            <b:link id="backToListLink" outcome="index">
+                Back to List
+            </b:link>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

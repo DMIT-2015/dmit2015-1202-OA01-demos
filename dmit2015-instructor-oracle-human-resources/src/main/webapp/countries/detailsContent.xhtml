@@ -1,0 +1,45 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+>
+
+    <b:panel title="Country Details"
+             collapsible="false"
+    >
+        <b:panelGrid columns="2" colSpans="2,10">
+            <h:panelGroup>
+                <strong><h:outputText value="CountryID"/></strong>
+            </h:panelGroup>
+            <h:outputText value="#{currentCountryEditController.editId}"/>
+
+            <h:panelGroup>
+                <strong><h:outputText value="Country Name"/></strong>
+            </h:panelGroup>
+            <h:outputText value="#{currentCountryEditController.existingCountry.countryName}"/>
+
+            <h:panelGroup>
+                <strong><h:outputText value="Region ID"/></strong>
+            </h:panelGroup>
+            <h:outputText value="#{currentCountryEditController.existingCountry.region.regionId}"/>
+
+            <h:panelGroup>
+                <strong><h:outputText value="Region Mame"/></strong>
+            </h:panelGroup>
+            <h:outputText value="#{currentCountryEditController.existingCountry.region.regionName}"/>
+
+
+        </b:panelGrid>
+
+    </b:panel>
+
+</ui:composition>

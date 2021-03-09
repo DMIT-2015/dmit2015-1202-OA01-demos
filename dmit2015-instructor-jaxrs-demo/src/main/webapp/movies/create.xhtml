@@ -22,6 +22,8 @@
         </b:jumbotron>
 
         <b:messages id="messages"/>
+        <h:messages id="messages2" />
+        <p:messages id="messages3"/>
 
         <b:form>
 
@@ -65,7 +67,7 @@
                         look="primary"
                         iconAwesome="save"
                         action="#{currentMovieCreateController.onCreateNew()}"
-                        update=":messages @form"
+                        update=":messages :messages2 :messages3 @form"
                 />
 
             </b:panel>
