@@ -1,7 +1,7 @@
 package dmit2015.view;
 
-import dmit2015.entity.Movie;
-import dmit2015.repository.MovieRepository;
+import dmit2015.entity.TodoItem;
+import dmit2015.repository.TodoItemRepository;
 import lombok.Getter;
 import org.omnifaces.util.Messages;
 
@@ -9,20 +9,20 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named("currentMovieCreateController")
+@Named("currentTodoItemCreateController")
 @RequestScoped
-public class MovieCreateController {
+public class TodoItemCreateController {
 
     @Inject
-    private MovieRepository _movieRepository;
+    private TodoItemRepository _todoitemRepository;
 
     @Getter
-    private Movie newMovie = new Movie();
+    private TodoItem newTodoItem = new TodoItem();
 
     public String onCreate() {
         String nextPage = "";
         try {
-            _movieRepository.add(newMovie);
+            _todoitemRepository.add(newTodoItem);
             Messages.addFlashGlobalInfo("Create was successful.");
             nextPage = "index?faces-redirect=true";
         } catch (Exception e) {

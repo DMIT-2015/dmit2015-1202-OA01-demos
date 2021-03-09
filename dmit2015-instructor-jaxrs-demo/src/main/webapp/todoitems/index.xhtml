@@ -13,12 +13,12 @@
         xmlns:b="http://bootsfaces.net/ui"
         template="/WEB-INF/jsf-templates/layout.xhtml">
 
-    <ui:param name="title" value="Movie - List"/>
+    <ui:param name="title" value="TodoItem - List"/>
 
     <ui:define name="maincontent">
 
         <b:jumbotron>
-            <h1>Movie List</h1>
+            <h1>TodoItem List</h1>
         </b:jumbotron>
 
         <b:messages id="messages"/>
@@ -33,16 +33,16 @@
             </b:commandButton>
 
             <b:dataTable id="entityTable"
-                         value="#{currentMovieListController.movieList}"
+                         value="#{currentTodoItemListController.todoitemList}"
                          var="currentItem">
 
                 <b:dataTableColumn label="ID" value="#{currentItem.id}">
                 </b:dataTableColumn>
 
-                <b:dataTableColumn label="Title" value="#{currentItem.title}">
+                <b:dataTableColumn label="Name" value="#{currentItem.name}">
                 </b:dataTableColumn>
 
-                <b:dataTableColumn label="Release Date" value="#{currentItem.releaseDate}">
+                <b:dataTableColumn label="Complete" value="#{currentItem.complete}">
                 </b:dataTableColumn>
 
                 <b:dataTableColumn label="Action">

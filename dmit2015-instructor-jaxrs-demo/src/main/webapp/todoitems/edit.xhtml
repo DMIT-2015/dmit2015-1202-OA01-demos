@@ -11,50 +11,50 @@
         xmlns:of="http://omnifaces.org/functions"
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
-        template="/WEB-INF/jsf-templates/bootsfaces-template.xhtml">
+        template="/WEB-INF/jsf-templates/layout.xhtml">
 
-    <ui:param name="title" value="Edit Entity"/>
+    <ui:param name="title" value="Edit TodoItem"/>
 
     <ui:define name="maincontent">
 
         <b:jumbotron>
-            <h1>Edit Entity</h1>
+            <h1>Edit TodoItem</h1>
         </b:jumbotron>
 
         <b:messages id="messages"/>
 
         <b:form>
 
-            <b:panel title="Entity Details"
+            <b:panel title="TodoItem Details"
                      collapsible="false"
             >
-                <b:inputText id="replace-with-id-field"
-                             label="replace-with-id-field-name"
-                             value="replace-with-JSF-EL-value-expression"
+                <b:inputText id="entityId"
+                             label="TodoItem ID"
+                             value="#{currentTodoItemEditController.editId}"
                              readonly="true">
                 </b:inputText>
 
                 <b:inputText
-                        id="replace-with-1st-editable-field"
-                        label="replace-with-1st-edit-field"
-                        value="replace-with-1st-editable-JSF-EL-value-expression">
+                        id="name"
+                        label="Name"
+                        value="#{currentTodoItemEditController.existingTodoItem.name}">
                     <b:focus/> <!-- set focus on the first editable field -->
                 </b:inputText>
 
-                <b:inputText
-                        id="replace-with-2nd-editable-field"
-                        label="replace-with-2nd-edit-field"
-                        value="replace-with-2nd-editable-JSF-EL-value-expression">
-                </b:inputText>
+                <b:selectBooleanCheckbox
+                        id="complete"
+                        label="Complete"
+                        caption="Is Task Complete"
+                        value="#{currentTodoItemEditController.existingTodoItem.complete}">
 
-                <!-- TODO: add input fiedls for the properties of the entity -->
-
+                </b:selectBooleanCheckbox>
 
             </b:panel>
+
             <b:commandButton value="Save"
                              look="primary"
                              iconAwesome="save"
-                             action="replace-this-with-JSF-EL-method-expression"
+                             action="#{currentTodoItemEditController.onUpdate()}"
                              update=":messages @form"/>
             |
             <b:link id="backToListLink" outcome="index">

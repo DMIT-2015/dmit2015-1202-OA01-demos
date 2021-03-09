@@ -11,37 +11,24 @@
         xmlns:of="http://omnifaces.org/functions"
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
-        template="/WEB-INF/jsf-templates/bootsfaces-template.xhtml">
+        template="/WEB-INF/jsf-templates/layout.xhtml">
 
-    <ui:param name="title" value="Entity Details"/>
+    <ui:param name="title" value="TodoItem Details"/>
 
     <ui:define name="maincontent">
 
         <b:jumbotron>
-            <h1>Entity Details</h1>
+            <h1>TodoItem Details</h1>
         </b:jumbotron>
 
         <b:messages id="messages"/>
 
         <b:form>
 
-            <b:panel title="Entity Details"
-                     collapsible="false"
-            >
-                <b:panelGrid columns="2" colSpans="2,10">
-                    <h:panelGroup>
-                        <strong><h:outputText value="ID"/></strong>
-                    </h:panelGroup>
-                    <h:outputText value="replace-with-JSF-EL-value-expression"/>
-
-                    <!-- TODO: add columns for the properties of the entity -->
-
-                </b:panelGrid>
-
-            </b:panel>
+            <ui:include src="detailsContent.xhtml"></ui:include>
 
             <b:link id="editLink" outcome="edit" icon-awesome="edit">
-                <f:param name="editId" value="replace-with-JSF-EL-value-expression"/>
+                <f:param name="editId" value="#{currentTodoItemEditController.editId}"/>
                 edit
             </b:link>
             |
