@@ -70,7 +70,7 @@ public class CountryEditController implements Serializable {
     public String onDelete() {
         String nextPage = "";
         try {
-            _countryRepository.delete(existingCountry.getCountryId());
+            _countryRepository.deleteById(existingCountry.getCountryId());
             Messages.addFlashGlobalInfo("Delete was successful.");
             nextPage = "index?faces-redirect=true";
         } catch (Exception e) {

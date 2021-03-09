@@ -19,7 +19,7 @@ public class Employee implements Serializable {
 
 	@Id
 	@Column(name="EMPLOYEE_ID")
-	private long employeeId;
+	private Long employeeId;
 
 	@Column(name="COMMISSION_PCT")
 	private BigDecimal commissionPct;
@@ -71,11 +71,11 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public long getEmployeeId() {
+	public Long getEmployeeId() {
 		return this.employeeId;
 	}
 
-	public void setEmployeeId(long employeeId) {
+	public void setEmployeeId(Long employeeId) {
 		this.employeeId = employeeId;
 	}
 

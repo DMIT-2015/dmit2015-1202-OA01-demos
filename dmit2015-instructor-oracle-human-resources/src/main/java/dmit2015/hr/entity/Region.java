@@ -17,7 +17,7 @@ public class Region implements Serializable {
 
 	@Id
 	@Column(name="REGION_ID")
-	private long regionId;
+	private Long regionId;
 
 	@Column(name="REGION_NAME")
 	private String regionName;
@@ -29,11 +29,11 @@ public class Region implements Serializable {
 	public Region() {
 	}
 
-	public long getRegionId() {
+	public Long getRegionId() {
 		return this.regionId;
 	}
 
-	public void setRegionId(long regionId) {
+	public void setRegionId(Long regionId) {
 		this.regionId = regionId;
 	}
 

@@ -13,7 +13,7 @@ public class JobHistoryPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="EMPLOYEE_ID", insertable=false, updatable=false)
-	private long employeeId;
+	private Long employeeId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="START_DATE")
@@ -21,10 +21,10 @@ public class JobHistoryPK implements Serializable {
 
 	public JobHistoryPK() {
 	}
-	public long getEmployeeId() {
+	public Long getEmployeeId() {
 		return this.employeeId;
 	}
-	public void setEmployeeId(long employeeId) {
+	public void setEmployeeId(Long employeeId) {
 		this.employeeId = employeeId;
 	}
 	public java.util.Date getStartDate() {

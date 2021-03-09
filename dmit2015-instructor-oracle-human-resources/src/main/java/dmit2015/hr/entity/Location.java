@@ -17,7 +17,7 @@ public class Location implements Serializable {
 
 	@Id
 	@Column(name="LOCATION_ID")
-	private long locationId;
+	private Long locationId;
 
 	private String city;
 
@@ -42,11 +42,11 @@ public class Location implements Serializable {
 	public Location() {
 	}
 
-	public long getLocationId() {
+	public Long getLocationId() {
 		return this.locationId;
 	}
 
-	public void setLocationId(long locationId) {
+	public void setLocationId(Long locationId) {
 		this.locationId = locationId;
 	}
 

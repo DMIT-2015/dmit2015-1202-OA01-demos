@@ -55,7 +55,7 @@ public class RegionEditController implements Serializable {
     public String onDelete() {
         String nextPage = "";
         try {
-            _regionRepository.delete(existingRegion.getRegionId());
+            _regionRepository.deleteById(existingRegion.getRegionId());
             Messages.addFlashGlobalInfo("Delete was successful.");
             nextPage = "index?faces-redirect=true";
         } catch (Exception e) {
