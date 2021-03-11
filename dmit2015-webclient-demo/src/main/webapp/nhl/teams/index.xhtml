@@ -1,0 +1,55 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Team - List"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Team List</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+
+            <b:dataTable id="entityTable"
+                         value="#{currentTeamListController.teamList}"
+                         var="currentItem">
+
+                <b:dataTableColumn label="ID" value="#{currentItem.id}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="City" value="#{currentItem.venue.city}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Name" value="#{currentItem.name}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Venue" value="#{currentItem.venue.name}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Team Url">
+                    <a href="#{currentItem.officialSiteUrl}">Team Site</a>
+                </b:dataTableColumn>
+
+            </b:dataTable>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>
