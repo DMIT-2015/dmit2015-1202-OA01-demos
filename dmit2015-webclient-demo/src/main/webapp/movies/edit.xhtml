@@ -1,0 +1,85 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Edit Movie"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Edit Movie</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:panel title="Movie Details"
+                     collapsible="false"
+            >
+                <b:inputText id="entityId"
+                             label="Movie ID"
+                             value="#{currentMovieEditController.editId}"
+                             readonly="true">
+                </b:inputText>
+
+                <b:inputText
+                        id="title"
+                        label="Title"
+                        value="#{currentMovieEditController.existingMovie.title}">
+                    <b:focus/> <!-- set focus on the first editable field -->
+                </b:inputText>
+
+                <b:inputText
+                        id="releaseDate"
+                        label="Release Date (yyyy-MM-dd)"
+                        value="#{currentMovieEditController.existingMovie.releaseDate}">
+                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                </b:inputText>
+
+                <b:inputText
+                        id="price"
+                        label="Price"
+                        value="#{currentMovieEditController.existingMovie.price}">
+                </b:inputText>
+
+                <b:inputText
+                        id="genre"
+                        label="Genre"
+                        value="#{currentMovieEditController.existingMovie.genre}">
+                </b:inputText>
+
+                <b:inputText
+                        id="rating"
+                        label="Rating"
+                        value="#{currentMovieEditController.existingMovie.rating}">
+                </b:inputText>
+
+            </b:panel>
+
+            <b:commandButton value="Save"
+                             look="primary"
+                             iconAwesome="save"
+                             action="#{currentMovieEditController.onUpdate()}"
+                             update=":messages @form"/>
+            |
+            <b:link id="backToListLink" outcome="index">
+                Back to List
+            </b:link>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -21,6 +21,28 @@
   </properties>
 
   <dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+    <dependency>
+      <groupId>org.omnifaces</groupId>
+      <artifactId>omnifaces</artifactId>
+      <version>3.10.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>10.0.0-RC2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/net.bootsfaces/bootsfaces -->
+    <dependency>
+      <groupId>net.bootsfaces</groupId>
+      <artifactId>bootsfaces</artifactId>
+      <version>1.5.0</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
     <dependency>
       <groupId>com.squareup.retrofit2</groupId>
