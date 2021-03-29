@@ -1,0 +1,97 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Movies - List"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Movies List</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:commandButton value="Create New"
+                             action="create"
+                             iconAwesome="plus"
+                             look="info">
+
+            </b:commandButton>
+
+            <b:dataTable id="entityTable"
+                         value="#{currentMovieListController.movies}"
+                         var="currentItem">
+
+                <b:dataTableColumn label="ID" value="#{currentItem.id}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Username" value="#{currentItem.username}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Title" value="#{currentItem.title}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Genre" value="#{currentItem.genre}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Rating" value="#{currentItem.rating}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Price" >
+                    <h:outputText value="#{currentItem.price}">
+                        <f:convertNumber type="currency" />
+                    </h:outputText>
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Relase Date" >
+                    <h:outputText value="#{currentItem.releaseDate}">
+                        <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Action">
+                    <c:if test="#{request.isUserInRole('USER') || request.isUserInRole('Sales')}">
+                        <b:link id="editLink" outcome="edit" icon-awesome="edit">
+                            <f:param name="editId" value="#{currentItem.id}"/>
+                            edit
+                        </b:link>
+
+                        |
+                    </c:if>
+
+                    <b:link id="detailsLink" outcome="details" icon-awesome="info">
+                        <f:param name="editId" value="#{currentItem.id}"/>
+                        details
+                    </b:link>
+
+                    <c:if test="#{request.isUserInRole('ADMIN') || request.isUserInRole('Administration') || request.isUserInRole('Executive')}">
+                        |
+                        <b:link id="deleteLink" outcome="delete" icon-awesome="trash">
+                            <f:param name="editId" value="#{currentItem.id}"/>
+                            delete
+                        </b:link>
+                    </c:if>
+
+
+                </b:dataTableColumn>
+            </b:dataTable>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,19 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="File Not Found"/>
+
+    <ui:define name="maincontent">
+        <b:jumbotron>
+            <h1>HTTP Error 404 - File Not Found</h1>
+        </b:jumbotron>
+
+        <p>The requested resource #{requestScope['javax.servlet.error.request_uri']} does not exist on the server.
+        </p>
+
+    </ui:define>
+
+</ui:composition>

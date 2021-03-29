@@ -1,0 +1,90 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Create Movie"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Create Movie</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:panel title="Movie Details"
+                     collapsible="false"
+            >
+                <b:inputText
+                        id="title"
+                        label="Title"
+                        value="#{currentMovieCreateController.newMovie.title}">
+                    <b:focus/> <!-- set focus on the first editable field -->
+                </b:inputText>
+
+                <b:inputText
+                        id="genre"
+                        label="Genre"
+                        value="#{currentMovieCreateController.newMovie.genre}">
+                </b:inputText>
+
+                <p>Movie Rating</p>
+                <b:radiobutton value="#{currentMovieCreateController.newMovie.rating}">
+                    <f:selectItem itemValue="G" itemLabel="General Audiences" />
+                    <f:selectItem itemValue="PG" itemLabel="Parental Guidance Suggested" />
+                    <f:selectItem itemValue="PG-13" itemLabel="Parents Strongly Cautioned" />
+                    <f:selectItem itemValue="R" itemLabel="Restricted" />
+                    <f:selectItem itemValue="NC-17" itemLabel="Adults Only" />
+                </b:radiobutton>
+
+                <b:inputText
+                        id="price"
+                        label="Price"
+                        value="#{currentMovieCreateController.newMovie.price}">
+                </b:inputText>
+
+                <!-- https://momentjs.com/docs/#/displaying/format/ -->
+                <!-- https://javaee.github.io/tutorial/jsf-page-core001.html -->
+                <b:dateTimePicker
+                    id="releaseDate"
+                    label="Release Date"
+                    format="MM/DD/YYYY"
+                    allowInputToggle="true"
+                    showDate="true"
+                    showTime="false"
+                    showIcon="true"
+                    value="#{currentMovieCreateController.newMovie.releaseDate}">
+                    <f:convertDateTime type="localDate" pattern="MM/dd/yyy" />
+                </b:dateTimePicker>
+
+                <b:commandButton
+                        value="Create"
+                        look="primary"
+                        iconAwesome="save"
+                        action="#{currentMovieCreateController.onCreateNew()}"
+                        ajax="false"
+                />
+
+            </b:panel>
+            <b:link id="backToListLink" outcome="index">
+                Back to List
+            </b:link>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

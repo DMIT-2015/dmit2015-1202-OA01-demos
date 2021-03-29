@@ -1,0 +1,62 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Create TodoItem"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Create TodoItem</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:panel title="TodoItem Details"
+                     collapsible="false"
+            >
+                <b:inputText
+                        id="name"
+                        label="Name"
+                        value="#{currentTodoItemCreateController.newTodoItem.name}">
+                    <b:focus/> <!-- set focus on the first editable field -->
+                </b:inputText>
+
+                <b:selectBooleanCheckbox
+                        id="complete"
+                        label="Please select if complete"
+                        caption="Complete?"
+                        value="#{currentTodoItemCreateController.newTodoItem.complete}">
+                </b:selectBooleanCheckbox>
+
+                <b:commandButton
+                        value="Create"
+                        look="primary"
+                        iconAwesome="save"
+                        action="#{currentTodoItemCreateController.onCreate()}"
+                        ajax="false"
+                />
+
+            </b:panel>
+            <b:link id="backToListLink" outcome="index">
+                Back to List
+            </b:link>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>
