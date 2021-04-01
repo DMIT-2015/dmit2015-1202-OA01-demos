@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="chunkEnforcementZoneCentre"
+     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     version="1.0">
+
+    <properties>
+        <property name="output_file" value="/home/user2015/Downloads/Scheduled_Photo_Enforcement_Zone_Centre_Points.sql"/>
+        <property name="input_file" value="/home/user2015/Downloads/Scheduled_Photo_Enforcement_Zone_Centre_Points.csv"/>
+        <property name="table_name" value="edmonton_scheduled_photo_enforcement_zone_centre_point"/>
+    </properties>
+
+    <!--
+    <listeners>
+        <listener ref="jobListener" />
+    </listeners>
+-->
+    <step id="step1">
+        <listeners>
+            <listener ref="itemStepListener" />
+            <!--
+                <listener ref="chunkListener" />
+                <listener ref="itemReadListener" />
+                <listener ref="itemProcessListener" />
+                <listener ref="itemWriteListener" />
+    -->
+        </listeners>
+        <chunk item-count="50">
+            <reader ref="enforcementZoneCentreItemReader" />
+            <processor ref="enforcementZoneCentreItemProcessor" />
+            <writer ref="enforcementZoneCentreItemWriter" />
+        </chunk>
+    </step>
+</job>

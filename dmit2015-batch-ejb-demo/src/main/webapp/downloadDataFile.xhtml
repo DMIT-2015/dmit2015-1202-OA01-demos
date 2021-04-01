@@ -1,0 +1,66 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Download Files"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>File Download</h1>
+        </b:jumbotron>
+        <b:messages id="messages" />
+
+        <b:form id="form1">
+
+            <b:inputText
+                    id="downloadUri"
+                    label="Download URI"
+                    value="#{currentDownloadFileController.downloadUri}"
+            />
+
+            <b:inputText
+                    id="downloadDirectory"
+                    label="Download Directory to save file to"
+                    value="#{currentDownloadFileController.downloadDirectory}"
+            />
+
+            <!-- https://momentjs.com/docs/#/displaying/format/ -->
+            <!-- https://javaee.github.io/tutorial/jsf-page-core001.html -->
+            <!-- https://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html -->
+            <b:dateTimePicker
+                    id="scheduledDateTIme"
+                    label="Scheduled Date Time"
+                    format="YYYY-MM-DD H:mm"
+                    value="#{currentDownloadFileController.scheduledDateTIme}"
+                    allow-input-toggle="true"
+                    show-date="true"
+                    show-time="true"
+                    show-icon="true"
+            >
+                <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd H:mm"/>
+            </b:dateTimePicker>
+
+            <b:commandButton
+                    look="primary"
+                    iconAwesome="download"
+                    value="Schedule File Download"
+                    action="#{currentDownloadFileController.scheduleFileDownload}"
+                    update=":messages @form"
+            />
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>
