@@ -1,0 +1,98 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="EnforcementZoneCentre - Find One by Location"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Find One by Location</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <c:if test="#{not empty currentEnforcementZoneCentreFindOneByLocationController.findOneResult}">
+
+            <b:panelGrid columns="2" colSpans="2,10">
+                <h:panelGroup>
+                    <strong><h:outputText value="Site ID"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.siteId}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Location Description"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.locationDescription}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Speed Limit"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.speedLimit}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Reason Code(s)"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.reasonCodes}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Latitude"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.latitude}"/>
+
+                <h:panelGroup>
+                    <strong><h:outputText value="Longitude"/></strong>
+                </h:panelGroup>
+                <h:outputText value="#{currentEnforcementZoneCentreFindOneByLocationController.findOneResult.longitude}"/>
+
+            </b:panelGrid>
+
+        </c:if>
+
+        <b:form id="form1" inline="true">
+            <b:inputText
+                    id="latitude"
+                    label="Latitude"
+                    value="#{currentEnforcementZoneCentreFindOneByLocationController.latitude}"
+            />
+            <b:inputText
+                    id="longitude"
+                    label="Longitude"
+                    value="#{currentEnforcementZoneCentreFindOneByLocationController.longitude}"
+            />
+            <b:inputText
+                    id="distance"
+                    label="Distance (in Metre)"
+                    value="#{currentEnforcementZoneCentreFindOneByLocationController.distance}"
+            />
+            <b:commandButton
+                    value="Search"
+                    action="#{currentEnforcementZoneCentreFindOneByLocationController.onSearch}"
+                    ajax="false"
+                    look="primary"
+                    iconAwesome="Search"
+                />
+
+            <b:commandButton
+                    value="Clear"
+                    action="#{currentEnforcementZoneCentreFindOneByLocationController.onClear}"
+                    ajax="false"
+                    iconAwesome="erase"
+            />
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

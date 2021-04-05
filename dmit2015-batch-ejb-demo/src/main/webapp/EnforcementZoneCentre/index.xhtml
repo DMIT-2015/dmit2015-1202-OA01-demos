@@ -1,0 +1,57 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml"
+>
+
+    <ui:param name="title" value="EnforcementZoneCentre - List"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>List</h1>
+        </b:jumbotron>
+
+        <b:messages id="messages"/>
+
+        <b:form>
+
+            <b:dataTable id="entityTable"
+                         value="#{currentEnforcementZoneCentreListController.enforcementzonecentreList}"
+                         var="currentItem">
+
+                <b:dataTableColumn label="SiteId" value="#{currentItem.siteId}" styleClass="text-right">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Location Description" value="#{currentItem.locationDescription}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Speed Limit" value="#{currentItem.speedLimit}" styleClass="text-right">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Reason Code(s)" value="#{currentItem.reasonCodes}">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Latitude" value="#{currentItem.latitude}" styleClass="text-right">
+                </b:dataTableColumn>
+
+                <b:dataTableColumn label="Longitude" value="#{currentItem.longitude}" styleClass="text-right">
+                </b:dataTableColumn>
+
+            </b:dataTable>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>

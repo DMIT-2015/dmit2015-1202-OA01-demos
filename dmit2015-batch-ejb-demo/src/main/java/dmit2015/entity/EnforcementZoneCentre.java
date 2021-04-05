@@ -7,15 +7,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.geolatte.geom.Point;
 
 /**
  * https://data.edmonton.ca/Transportation/Scheduled-Photo-Enforcement-Zone-Centre-Points/akzz-54k3
+ *
+ * The direct link to download the CSV file is: https://data.edmonton.ca/api/views/akzz-54k3/rows.csv?accessType=DOWNLOAD
  *
  * This dataset represents the centre points of each Zone or Operational Area where Photo Enforcement is "scheduled" to be conducted.
  * An enforcement unit can be found anywhere along the area of the Zone.
@@ -88,16 +90,21 @@ public class EnforcementZoneCentre implements Serializable {
 	 * The latitude value for the centre of the enforcement zone
 	 */
 	@NotNull(message = "Latitude is required")
-	private Double latitude;
+	@Column(nullable = false)
+	private double latitude;
 
 	/**
 	 * The longitude value for the centre of the enforcement zone
 	 */
 	@NotNull(message = "Longitude is required")
+	@Column(nullable = false)
 	private Double longitude;
 
-	@Version
-	private Integer version;
+	/**
+	 * The combined latitude/longitude values used to geo locate the centre of the enforcement zone for mapping purposes
+	 */
+	// To use geolatte with Oracle you must set a system property GEOLATTE_USE_SDO_POINT_TYPE=true to enable this feature.
+	private Point geoLocation;
 
 	/**
 	 * https://vladmihalcea.com/the-best-way-to-implement-equals-hashcode-and-tostring-with-jpa-and-hibernate/

@@ -2,6 +2,10 @@ package dmit2015.batch;
 
 import dmit2015.entity.EnforcementZoneCentre;
 import dmit2015.repository.EnforcementZoneCentreRepository;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
+import org.geolatte.geom.builder.DSL;
+import org.geolatte.geom.crs.CoordinateReferenceSystems;
 
 import javax.batch.api.AbstractBatchlet;
 import javax.batch.runtime.context.JobContext;
@@ -53,6 +57,9 @@ public class EnforcementZoneCentreBatchlet extends AbstractBatchlet {
                 model.setReasonCodes(values[3].replaceAll("[\"()]", ""));
                 model.setLatitude(Double.valueOf(values[4]));
                 model.setLongitude(Double.valueOf(values[5]));
+
+                Point<G2D> geoLocation = DSL.point(CoordinateReferenceSystems.WGS84, DSL.g(model.getLongitude(), model.getLatitude()));
+                model.setGeoLocation(geoLocation);
 
                 // if the record exists update the record otherwise create a new record
                 if (_repository.findOneById(model.getSiteId()).isEmpty()) {
